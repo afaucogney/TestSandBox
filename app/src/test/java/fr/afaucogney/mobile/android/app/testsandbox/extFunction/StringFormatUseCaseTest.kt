@@ -15,7 +15,6 @@ class StringFormatUseCaseTest {
 
     @Test
     fun t2() {
-
         mockkObject(String.Companion)
         every { String.format(any<Locale>(), any(), any()) } returns ""
 
@@ -30,7 +29,6 @@ class StringFormatUseCaseTest {
 
     @Test
     fun t3() {
-
         mockkStatic("kotlin.text.StringsKt")
         every { String.format(any<Locale>(), any(), any()) } returns ""
 
@@ -43,4 +41,16 @@ class StringFormatUseCaseTest {
         confirmVerified(String)
     }
 
+    @Test
+    fun t4() {
+        mockkStatic(java.lang.String::class)
+        every { java.lang.String.format(any<Locale>(), any(), any()) } returns ""
+
+        val result = StringFormatUseCase().execute(false)
+        println(result)
+
+        verifySequence {
+            java.lang.String.format(any<Locale>(), any(), any()) // java.lang.NullPointerException
+        }
+    }
 }
