@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestSandBox</string>
+    <string name="app_name_debug">TestSandBox Fake</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

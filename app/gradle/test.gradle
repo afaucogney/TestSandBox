@@ -25,7 +25,10 @@ android {
     }
 
     testOptions {
-        unitTests.returnDefaultValues = true
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
     }
 
     buildTypes {
@@ -139,6 +142,9 @@ dependencies {
 
     // JSON lib for test
 //    testImplementation files('./libs/org.json-20150729.jar')
+
+    // RoboElectric
+    testImplementation 'org.robolectric:robolectric:4.2'
 }
 
 //// JaCoCo settings

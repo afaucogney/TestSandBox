@@ -1,0 +1,73 @@
+def ARCHI_COMP_VERSION = '1.1.1'
+def KOTLIN_REALM_EXT_VERSION = '2.2.0'
+def RX_JAVA_VERSION = '2.2.4'
+def RX_ANDROID_VERSION = '2.1.0'
+def RX_KOTLIN_VERSION = '2.3.0'
+def AUTODISPOSE_VERSION = '0.6.1'
+def CONSTRAINT_LAYOUT_VERSION = '1.1.3'
+def TOOTHPICK_VERSION = '1.1.3'
+def SUPPORT_VERSION = "27.1.1"//$rootProject.supportVersion"
+
+dependencies {
+    // Kotlin
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$ARCHI_COMP_VERSION"
+    implementation "android.arch.lifecycle:reactivestreams:$ARCHI_COMP_VERSION"
+    kapt "android.arch.lifecycle:compiler:$ARCHI_COMP_VERSION"
+
+    // Toothpick
+    implementation "com.github.stephanenicolas.toothpick:toothpick-runtime:$TOOTHPICK_VERSION"
+    implementation "com.github.stephanenicolas.toothpick:smoothie:$TOOTHPICK_VERSION"
+    kapt "com.github.stephanenicolas.toothpick:toothpick-compiler:$TOOTHPICK_VERSION"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+    implementation "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
+    implementation "io.reactivex.rxjava2:rxkotlin:$RX_KOTLIN_VERSION"
+
+    // Autodispose
+    implementation "com.uber.autodispose:autodispose-android:$AUTODISPOSE_VERSION"
+    implementation "com.uber.autodispose:autodispose-android-archcomponents:$AUTODISPOSE_VERSION"
+    implementation "com.uber.autodispose:autodispose-kotlin:$AUTODISPOSE_VERSION"
+
+    // Kotlin Realm Extensions
+    implementation "com.github.vicpinm:krealmextensions:$KOTLIN_REALM_EXT_VERSION"
+
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Android Support (AppCompat)
+    implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
+    implementation "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+    implementation "com.android.support:design:$SUPPORT_VERSION"
+    implementation "com.android.support:cardview-v7:$SUPPORT_VERSION"
+    implementation "com.android.support:recyclerview-v7:$SUPPORT_VERSION"
+}
+
+android {
+//    kapt {
+//        arguments {
+//            arg("toothpick_registry_package_name", "com.edf.edfetmoi")
+//        }
+//    }
+
+    configurations.all {
+        resolutionStrategy.force "com.android.support:leanback-v17:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:appcompat-v7:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-v13:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:design:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:recyclerview-v7:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-core-ui:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-core-utils:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-annotations:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-compat:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-fragment:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:customtabs:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-v4:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-v13:$SUPPORT_VERSION"
+        resolutionStrategy.force "com.android.support:support-media-compat:$SUPPORT_VERSION"
+    }
+}
