@@ -114,18 +114,18 @@ android {
 
 dependencies {
     // Android tests
-//    androidTestImplementation "com.android.support.test:runner:$ANDROID_TEST_VERSION"
-//    androidTestImplementation "com.android.support.test:rules:$ANDROID_TEST_VERSION"
+    androidTestImplementation "com.android.support.test:runner:$ANDROID_TEST_VERSION"
+    androidTestImplementation "com.android.support.test:rules:$ANDROID_TEST_VERSION"
 
     // Testing
-//    testImplementation "com.android.support:support-annotations:$rootProject.supportVersion"
+//    testImplementation "com.android.support:support-annotations:28.0.0"
     testImplementation "junit:junit:$JUNIT_VERSION"
-    testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
+//    testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
 
 //    // Mockito Kotlin
 //    testImplementation "com.nhaarman:mockito-kotlin:$MOCKITO_KOTLIN_VERSION"
-//    testImplementation "org.mockito:mockito-core:$MOCKITO_VERSION"
-//    testImplementation "org.mockito:mockito-inline:$MOCKITO_VERSION"
+    testImplementation "org.mockito:mockito-core:$MOCKITO_VERSION"
+    testImplementation "org.mockito:mockito-inline:$MOCKITO_VERSION"
 
     // Joda for testing Date wo context
     testImplementation 'joda-time:joda-time:2.9.9'
@@ -145,7 +145,14 @@ dependencies {
 
     // RoboElectric
     testImplementation 'org.robolectric:robolectric:4.2'
+
+    // Bdd
+    testImplementation "io.cucumber:cucumber-android:4.2.0"
+    testImplementation "io.cucumber:cucumber-junit:4.2.0"
 }
+
+
+
 
 //// JaCoCo settings
 //jacoco {

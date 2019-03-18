@@ -3,17 +3,23 @@
           package="fr.afaucogney.mobile.android.app.testsandbox">
 
     <application
+            android:name=".application.TestStandboxApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+
+        <uses-library android:name="android.test.base"
+                      android:required="false" />
+        <uses-library android:name="android.test.mock"
+                      android:required="false" />
+
         <activity
                 android:name=".MainActivity"
                 android:label="@string/title_activity_main"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
-
 </manifest>
