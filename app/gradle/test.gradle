@@ -5,6 +5,7 @@ def ANDROID_TEST_VERSION = '1.0.1'
 //def TOOTHPICK_VERSION = '1.1.3'
 
 //apply plugin: 'jacoco-android'
+apply plugin: 'pl.droidsonroids.pitest'
 
 android {
 
@@ -127,18 +128,28 @@ dependencies {
 //    testImplementation "org.mockito:mockito-core:$MOCKITO_VERSION"
 //    testImplementation "org.mockito:mockito-inline:$MOCKITO_VERSION"
 
+    testImplementation "org.mockito:mockito-core:3.5.0"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
     // Joda for testing Date wo context
-    testImplementation 'joda-time:joda-time:2.9.9'
+    testImplementation 'joda-time:joda-time:2.10.3'
 
     // Toothpick
 //    testImplementation "com.github.stephanenicolas.toothpick:toothpick-testing:$TOOTHPICK_VERSION"
 
     // Unit Test
-    testImplementation "io.mockk:mockk:1.9.kotlin12"
-    testImplementation("org.assertj:assertj-core:3.11.1")
+    testImplementation "io.mockk:mockk:1.10.0"
+    testImplementation "io.mockk:mockk-agent-api:1.10.0"
+    testImplementation "io.mockk:mockk-agent-jvm:1.10.0"
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    testImplementation("org.assertj:assertj-core:3.16.1")
     testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
     testImplementation 'com.github.dakusui:jcunit:0.8.12'
     testImplementation 'com.carrotsearch.randomizedtesting:randomizedtesting-runner:2.1.13'
+
+    testImplementation "com.github.stephanenicolas.toothpick:toothpick-testing:3.1.0"
+    testImplementation "com.github.stephanenicolas.toothpick:toothpick-testing-junit4:3.1.0"
 
     // JSON lib for test
 //    testImplementation files('./libs/org.json-20150729.jar')
@@ -192,3 +203,19 @@ dependencies {
 //sonarqube {
 //    androidVariant 'developpementDebug'
 //}
+
+
+pitest {
+    targetClasses = ['fr.afaucogney.mobile.android.app.testsandbox.pit.*']
+//    testSourceSets = [project.file("src/kotlin")]
+//    targetTests=['com.edf.edfetmoi.domain.usecase.pit.*Test']
+    targetTests = ['fr.afaucogney.mobile.android.app.testsandbox.pit.*']
+    mainSourceSets = [project.file("src")]//, rootProject.file("base/core/src/java"), rootProject.file("base/archi/src/java")]
+    additionalMutableCodePaths = [project.file("build/tmp/kotlin-classes/debug")]//, rootProject.file("base/core/build/tmp/kotlin-classes/debug"),rootProject.file("base/archi/build/tmp/kotlin-classes/debug")]
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    excludeMockableAndroidJar = true
+    verbose = true
+    skipFailingTests = true
+    enableDefaultIncrementalAnalysis = false
+}

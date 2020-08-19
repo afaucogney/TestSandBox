@@ -5,7 +5,7 @@ def RX_ANDROID_VERSION = '2.1.0'
 def RX_KOTLIN_VERSION = '2.3.0'
 def AUTODISPOSE_VERSION = '0.6.1'
 def CONSTRAINT_LAYOUT_VERSION = '1.1.3'
-def TOOTHPICK_VERSION = '1.1.3'
+def TOOTHPICK_VERSION = '3.1.0'
 def SUPPORT_VERSION = "27.1.1"//$rootProject.supportVersion"
 
 dependencies {
@@ -18,8 +18,8 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:$ARCHI_COMP_VERSION"
 
     // Toothpick
-    implementation "com.github.stephanenicolas.toothpick:toothpick-runtime:$TOOTHPICK_VERSION"
-    implementation "com.github.stephanenicolas.toothpick:smoothie:$TOOTHPICK_VERSION"
+    implementation "com.github.stephanenicolas.toothpick:ktp:$TOOTHPICK_VERSION"
+    implementation "com.github.stephanenicolas.toothpick:smoothie-androidx:$TOOTHPICK_VERSION"
     kapt "com.github.stephanenicolas.toothpick:toothpick-compiler:$TOOTHPICK_VERSION"
 
     // Rx
